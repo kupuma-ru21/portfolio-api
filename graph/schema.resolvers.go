@@ -12,19 +12,23 @@ import (
 	"portfolio-api/graph/model"
 )
 
-func (r *mutationResolver) CreateTodo(ctx context.Context, input model.NewTodo) (*model.Todo, error) {
+// CreateApp is the resolver for the createApp field.
+func (r *mutationResolver) CreateApp(ctx context.Context, input model.NewApp) (*model.App, error) {
 	randNumber, _ := rand.Int(rand.Reader, big.NewInt(100))
-	todo := &model.Todo{
-		Text: input.Text,
-		ID:   fmt.Sprintf("T%d", randNumber),
-		User: &model.User{ID: input.UserID, Name: "user " + input.UserID},
+	app := &model.App{
+		ID:          fmt.Sprintf("T%d", randNumber),
+		Title:       input.Title,
+		Description: input.Description,
+		URL:         input.URL,
+		URLType:     input.URLType,
 	}
-	r.todos = append(r.todos, todo)
-	return todo, nil
+	r.apps = append(r.apps, app)
+	return app, nil
 }
 
-func (r *queryResolver) Todos(ctx context.Context) ([]*model.Todo, error) {
-	return r.todos, nil
+// Apps is the resolver for the apps field.
+func (r *queryResolver) Apps(ctx context.Context) ([]*model.App, error) {
+	return r.apps, nil
 }
 
 // Mutation returns MutationResolver implementation.
