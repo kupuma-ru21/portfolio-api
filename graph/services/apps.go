@@ -30,8 +30,8 @@ func convertApps(apps db.AppSlice) []*model.App {
 	return result
 }
 
-func (u *appService) GetApps(ctx context.Context) ([]*model.App, error) {
-	apps, err := db.Apps().All(ctx, u.exec)
+func (a *appService) GetApps(ctx context.Context) ([]*model.App, error) {
+	apps, err := db.Apps().All(ctx, a.exec)
 
 	if err != nil {
 		return nil, err
