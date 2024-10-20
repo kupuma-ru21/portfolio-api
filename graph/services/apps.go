@@ -5,7 +5,8 @@ import (
 	"portfolio-api/graph/db"
 	"portfolio-api/graph/model"
 
-	"github.com/volatiletech/sqlboiler/boil"
+	"github.com/google/uuid"
+	"github.com/volatiletech/sqlboiler/v4/boil"
 )
 
 type appService struct {
@@ -38,4 +39,15 @@ func (u *appService) GetApps(ctx context.Context) ([]*model.App, error) {
 
 
 	return convertApps(apps), nil
+}
+
+func (a *appService) CreateApp(ctx context.Context, input model.NewApp) (*model.App, error) {
+	itemID := uuid.New()
+	newApp := db.App{ID: itemID.String(), Title: input.Title, Description: input.Description, Link: input.Link, LinkType: input.LinkType, ImageUrl: input.ImageURL}
+	err := newApp.Insert(ctx, a.exec, boil.Infer())
+	if err != nil {
+		return nil, err
+	}
+
+	return &model.App{ID: newApp.ID}, nil
 }

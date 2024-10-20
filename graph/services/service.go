@@ -9,6 +9,7 @@ import (
 
 type AppService interface {
 	GetApps(ctx context.Context) ([]*model.App, error)
+	CreateApp(ctx context.Context, input model.NewApp) (*model.App, error)
 }
 
 type Services interface {

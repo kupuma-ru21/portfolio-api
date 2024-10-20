@@ -6,25 +6,12 @@ package graph
 
 import (
 	"context"
-	"crypto/rand"
-	"fmt"
-	"math/big"
 	"portfolio-api/graph/model"
 )
 
 // CreateApp is the resolver for the createApp field.
 func (r *mutationResolver) CreateApp(ctx context.Context, input model.NewApp) (*model.App, error) {
-	randNumber, _ := rand.Int(rand.Reader, big.NewInt(100))
-	app := &model.App{
-		ID:          fmt.Sprintf("T%d", randNumber),
-		Title:       input.Title,
-		Description: input.Description,
-		Link:        input.Link,
-		LinkType:    input.LinkType,
-		ImageURL: 	input.ImageURL,
-	}
-	r.apps = append(r.apps, app)
-	return app, nil
+	return r.Srv.CreateApp(ctx, input)
 }
 
 // Apps is the resolver for the apps field.
