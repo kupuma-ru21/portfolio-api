@@ -27,7 +27,7 @@ type App struct {
 	Title       string `boil:"title" json:"title" toml:"title" yaml:"title"`
 	Description string `boil:"description" json:"description" toml:"description" yaml:"description"`
 	Link        string `boil:"link" json:"link" toml:"link" yaml:"link"`
-	UrlType     string `boil:"urlType" json:"urlType" toml:"urlType" yaml:"urlType"`
+	LinkType    string `boil:"linkType" json:"linkType" toml:"linkType" yaml:"linkType"`
 
 	R *appR `boil:"-" json:"-" toml:"-" yaml:"-"`
 	L appL  `boil:"-" json:"-" toml:"-" yaml:"-"`
@@ -38,13 +38,13 @@ var AppColumns = struct {
 	Title       string
 	Description string
 	Link        string
-	UrlType     string
+	LinkType    string
 }{
 	ID:          "id",
 	Title:       "title",
 	Description: "description",
 	Link:        "link",
-	UrlType:     "urlType",
+	LinkType:    "linkType",
 }
 
 var AppTableColumns = struct {
@@ -52,13 +52,13 @@ var AppTableColumns = struct {
 	Title       string
 	Description string
 	Link        string
-	UrlType     string
+	LinkType    string
 }{
 	ID:          "apps.id",
 	Title:       "apps.title",
 	Description: "apps.description",
 	Link:        "apps.link",
-	UrlType:     "apps.urlType",
+	LinkType:    "apps.linkType",
 }
 
 // Generated where
@@ -95,13 +95,13 @@ var AppWhere = struct {
 	Title       whereHelperstring
 	Description whereHelperstring
 	Link        whereHelperstring
-	UrlType     whereHelperstring
+	LinkType    whereHelperstring
 }{
 	ID:          whereHelperstring{field: "\"apps\".\"id\""},
 	Title:       whereHelperstring{field: "\"apps\".\"title\""},
 	Description: whereHelperstring{field: "\"apps\".\"description\""},
 	Link:        whereHelperstring{field: "\"apps\".\"link\""},
-	UrlType:     whereHelperstring{field: "\"apps\".\"urlType\""},
+	LinkType:    whereHelperstring{field: "\"apps\".\"linkType\""},
 }
 
 // AppRels is where relationship names are stored.
@@ -121,8 +121,8 @@ func (*appR) NewStruct() *appR {
 type appL struct{}
 
 var (
-	appAllColumns            = []string{"id", "title", "description", "link", "urlType"}
-	appColumnsWithoutDefault = []string{"id", "title", "description", "link", "urlType"}
+	appAllColumns            = []string{"id", "title", "description", "link", "linkType"}
+	appColumnsWithoutDefault = []string{"id", "title", "description", "link", "linkType"}
 	appColumnsWithDefault    = []string{}
 	appPrimaryKeyColumns     = []string{"id"}
 	appGeneratedColumns      = []string{}
