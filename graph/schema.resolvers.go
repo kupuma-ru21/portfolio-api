@@ -28,7 +28,7 @@ func (r *mutationResolver) CreateApp(ctx context.Context, input model.NewApp) (*
 
 // Apps is the resolver for the apps field.
 func (r *queryResolver) Apps(ctx context.Context) ([]*model.App, error) {
-	return r.apps, nil
+	return r.Srv.GetApps(ctx)
 }
 
 // Mutation returns MutationResolver implementation.

@@ -5,7 +5,9 @@ go 1.23.1
 require (
 	github.com/99designs/gqlgen v0.17.55
 	github.com/friendsofgo/errors v0.9.2
+	github.com/lib/pq v1.10.6
 	github.com/vektah/gqlparser/v2 v2.5.17
+	github.com/volatiletech/sqlboiler v3.7.1+incompatible
 	github.com/volatiletech/sqlboiler/v4 v4.16.2
 	github.com/volatiletech/strmangle v0.0.6
 )

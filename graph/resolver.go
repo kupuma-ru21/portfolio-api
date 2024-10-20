@@ -1,6 +1,9 @@
 package graph
 
-import "portfolio-api/graph/model"
+import (
+	"portfolio-api/graph/model"
+	"portfolio-api/graph/services"
+)
 
 // This file will not be regenerated automatically.
 //
@@ -8,4 +11,5 @@ import "portfolio-api/graph/model"
 
 type Resolver struct{
 	apps []*model.App
+	Srv services.Services
 }
