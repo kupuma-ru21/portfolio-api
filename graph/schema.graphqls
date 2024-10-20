@@ -8,6 +8,7 @@ type App {
   description: String!
   link: String!
   linkType: String!
+  imageUrl: String!
 }
 
 type Query {
@@ -19,6 +20,7 @@ input NewApp {
   description: String!
   link: String!
   linkType: String!
+  imageUrl: String!
 }
 
 type Mutation {

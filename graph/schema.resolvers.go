@@ -20,7 +20,8 @@ func (r *mutationResolver) CreateApp(ctx context.Context, input model.NewApp) (*
 		Title:       input.Title,
 		Description: input.Description,
 		Link:        input.Link,
-		LinkType:     input.LinkType,
+		LinkType:    input.LinkType,
+		ImageURL: 	input.ImageURL,
 	}
 	r.apps = append(r.apps, app)
 	return app, nil
