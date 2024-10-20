@@ -22,7 +22,7 @@ func main() {
 		port = defaultPort
 	}
 
-	db, err := sql.Open("postgres", "dbname=portfolio user=workuser sslmode=disable")
+	db, err := sql.Open("postgres", "dbname=portfolio sslmode=disable")
 	if err != nil {
 		log.Fatal(err)
 	}
