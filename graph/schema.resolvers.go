@@ -19,7 +19,7 @@ func (r *mutationResolver) CreateApp(ctx context.Context, input model.NewApp) (*
 		ID:          fmt.Sprintf("T%d", randNumber),
 		Title:       input.Title,
 		Description: input.Description,
-		URL:         input.URL,
+		Link:        input.Link,
 		URLType:     input.URLType,
 	}
 	r.apps = append(r.apps, app)

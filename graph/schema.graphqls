@@ -6,7 +6,7 @@ type App {
   id: ID!
   title: String!
   description: String!
-  URL: String!
+  link: String!
   urlType: String!
 }
 
@@ -17,7 +17,7 @@ type Query {
 input NewApp {
   title: String!
   description: String!
-  url: String!
+  link: String!
   urlType: String!
 }
 
