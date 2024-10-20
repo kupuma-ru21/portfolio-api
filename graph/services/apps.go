@@ -20,7 +20,7 @@ func convertApps(apps db.AppSlice) []*model.App {
 			ID:          app.ID,
 			Title:       app.Title,
 			Description: app.Description,
-			Link:         app.URL,
+			Link:         app.Link,
 			LinkType:     app.UrlType,
 		})
 	}
