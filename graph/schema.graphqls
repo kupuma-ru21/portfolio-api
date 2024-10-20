@@ -7,7 +7,7 @@ type App {
   title: String!
   description: String!
   link: String!
-  urlType: String!
+  linkType: String!
 }
 
 type Query {
@@ -18,7 +18,7 @@ input NewApp {
   title: String!
   description: String!
   link: String!
-  urlType: String!
+  linkType: String!
 }
 
 type Mutation {

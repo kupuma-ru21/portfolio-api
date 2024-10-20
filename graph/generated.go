@@ -51,8 +51,8 @@ type ComplexityRoot struct {
 		Description func(childComplexity int) int
 		ID          func(childComplexity int) int
 		Link        func(childComplexity int) int
+		LinkType    func(childComplexity int) int
 		Title       func(childComplexity int) int
-		URLType     func(childComplexity int) int
 	}
 
 	Mutation struct {
@@ -111,19 +111,19 @@ func (e *executableSchema) Complexity(typeName, field string, childComplexity in
 
 		return e.complexity.App.Link(childComplexity), true
 
+	case "App.linkType":
+		if e.complexity.App.LinkType == nil {
+			break
+		}
+
+		return e.complexity.App.LinkType(childComplexity), true
+
 	case "App.title":
 		if e.complexity.App.Title == nil {
 			break
 		}
 
 		return e.complexity.App.Title(childComplexity), true
-
-	case "App.urlType":
-		if e.complexity.App.URLType == nil {
-			break
-		}
-
-		return e.complexity.App.URLType(childComplexity), true
 
 	case "Mutation.createApp":
 		if e.complexity.Mutation.CreateApp == nil {
@@ -545,8 +545,8 @@ func (ec *executionContext) fieldContext_App_link(_ context.Context, field graph
 	return fc, nil
 }
 
-func (ec *executionContext) _App_urlType(ctx context.Context, field graphql.CollectedField, obj *model.App) (ret graphql.Marshaler) {
-	fc, err := ec.fieldContext_App_urlType(ctx, field)
+func (ec *executionContext) _App_linkType(ctx context.Context, field graphql.CollectedField, obj *model.App) (ret graphql.Marshaler) {
+	fc, err := ec.fieldContext_App_linkType(ctx, field)
 	if err != nil {
 		return graphql.Null
 	}
@@ -559,7 +559,7 @@ func (ec *executionContext) _App_urlType(ctx context.Context, field graphql.Coll
 	}()
 	resTmp, err := ec.ResolverMiddleware(ctx, func(rctx context.Context) (interface{}, error) {
 		ctx = rctx // use context from middleware stack in children
-		return obj.URLType, nil
+		return obj.LinkType, nil
 	})
 	if err != nil {
 		ec.Error(ctx, err)
@@ -576,7 +576,7 @@ func (ec *executionContext) _App_urlType(ctx context.Context, field graphql.Coll
 	return ec.marshalNString2string(ctx, field.Selections, res)
 }
 
-func (ec *executionContext) fieldContext_App_urlType(_ context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
+func (ec *executionContext) fieldContext_App_linkType(_ context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
 	fc = &graphql.FieldContext{
 		Object:     "App",
 		Field:      field,
@@ -636,8 +636,8 @@ func (ec *executionContext) fieldContext_Mutation_createApp(ctx context.Context,
 				return ec.fieldContext_App_description(ctx, field)
 			case "link":
 				return ec.fieldContext_App_link(ctx, field)
-			case "urlType":
-				return ec.fieldContext_App_urlType(ctx, field)
+			case "linkType":
+				return ec.fieldContext_App_linkType(ctx, field)
 			}
 			return nil, fmt.Errorf("no field named %q was found under type App", field.Name)
 		},
@@ -703,8 +703,8 @@ func (ec *executionContext) fieldContext_Query_apps(_ context.Context, field gra
 				return ec.fieldContext_App_description(ctx, field)
 			case "link":
 				return ec.fieldContext_App_link(ctx, field)
-			case "urlType":
-				return ec.fieldContext_App_urlType(ctx, field)
+			case "linkType":
+				return ec.fieldContext_App_linkType(ctx, field)
 			}
 			return nil, fmt.Errorf("no field named %q was found under type App", field.Name)
 		},
@@ -2621,7 +2621,7 @@ func (ec *executionContext) unmarshalInputNewApp(ctx context.Context, obj interf
 		asMap[k] = v
 	}
 
-	fieldsInOrder := [...]string{"title", "description", "link", "urlType"}
+	fieldsInOrder := [...]string{"title", "description", "link", "linkType"}
 	for _, k := range fieldsInOrder {
 		v, ok := asMap[k]
 		if !ok {
@@ -2649,13 +2649,13 @@ func (ec *executionContext) unmarshalInputNewApp(ctx context.Context, obj interf
 				return it, err
 			}
 			it.Link = data
-		case "urlType":
-			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("urlType"))
+		case "linkType":
+			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("linkType"))
 			data, err := ec.unmarshalNString2string(ctx, v)
 			if err != nil {
 				return it, err
 			}
-			it.URLType = data
+			it.LinkType = data
 		}
 	}
 
@@ -2701,8 +2701,8 @@ func (ec *executionContext) _App(ctx context.Context, sel ast.SelectionSet, obj 
 			if out.Values[i] == graphql.Null {
 				out.Invalids++
 			}
-		case "urlType":
-			out.Values[i] = ec._App_urlType(ctx, field, obj)
+		case "linkType":
+			out.Values[i] = ec._App_linkType(ctx, field, obj)
 			if out.Values[i] == graphql.Null {
 				out.Invalids++
 			}

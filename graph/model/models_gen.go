@@ -7,7 +7,7 @@ type App struct {
 	Title       string `json:"title"`
 	Description string `json:"description"`
 	Link        string `json:"link"`
-	URLType     string `json:"urlType"`
+	LinkType    string `json:"linkType"`
 }
 
 type Mutation struct {
@@ -17,7 +17,7 @@ type NewApp struct {
 	Title       string `json:"title"`
 	Description string `json:"description"`
 	Link        string `json:"link"`
-	URLType     string `json:"urlType"`
+	LinkType    string `json:"linkType"`
 }
 
 type Query struct {
