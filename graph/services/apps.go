@@ -2,7 +2,6 @@ package services
 
 import (
 	"context"
-	"fmt"
 	"portfolio-api/graph/db"
 	"portfolio-api/graph/model"
 
@@ -33,7 +32,6 @@ func (u *appService) GetApps(ctx context.Context) ([]*model.App, error) {
 	apps, err := db.Apps().All(ctx, u.exec)
 
 	if err != nil {
-		fmt.Println("here")
 		return nil, err
 	}
 
